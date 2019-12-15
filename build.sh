@@ -6,3 +6,10 @@ do
   docker build --pull -f $i -t xlabsi/ubuntu:$tag .
   docker push xlabsi/ubuntu:$tag
 done
+
+for i in centos-*
+do
+  tag=${i/centos-}
+  docker build --pull -f $i -t xlabsi/centos:$tag .
+  docker push xlabsi/centos:$tag
+done
