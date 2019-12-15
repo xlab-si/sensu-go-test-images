@@ -13,3 +13,10 @@ do
   docker build --pull -f $i -t xlabsi/centos:$tag .
   docker push xlabsi/centos:$tag
 done
+
+for i in sensu-*
+do
+  tag=${i/sensu-}
+  docker build --pull -f $i -t xlabsi/sensu:$tag .
+  docker push xlabsi/sensu:$tag
+done
