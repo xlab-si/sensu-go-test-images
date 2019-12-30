@@ -14,6 +14,13 @@ do
   docker push xlabsi/centos:$tag
 done
 
+for i in redhat-*
+do
+  tag=${i/redhat-}
+  docker build --pull -f $i -t xlabsi/redhat:$tag .
+  docker push xlabsi/redhat:$tag
+done
+
 for i in sensu-*
 do
   tag=${i/sensu-}
