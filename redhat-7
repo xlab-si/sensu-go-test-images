@@ -1,4 +1,4 @@
-FROM registry.access.redhat.com/ubi7/ubi:latest 
+FROM registry.access.redhat.com/ubi7/ubi-init:latest 
 RUN yum makecache fast \
       && yum install -y \
            /usr/bin/python /usr/bin/python2-config sudo \
