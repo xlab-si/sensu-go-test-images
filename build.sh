@@ -21,6 +21,13 @@ do
   docker push xlabsi/redhat:$tag
 done
 
+for i in debian-*
+do
+  tag=${i/debian-}
+  docker build --pull -f $i -t xlabsi/debian:$tag .
+  docker push xlabsi/debian:$tag
+done
+
 for i in sensu-*
 do
   tag=${i/sensu-}
