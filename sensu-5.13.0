@@ -1,3 +1,0 @@
-FROM sensu/sensu:5.13.0
-RUN apk update \
-    && apk add --no-cache python sudo bash ca-certificates
