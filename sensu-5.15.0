@@ -2,7 +2,7 @@ FROM sensu/sensu:5.15.0
 RUN apk update \
     && apk add --no-cache python sudo bash ca-certificates
 CMD [ \
-  "/opt/sensu/bin/sensu-backend", "start", \
+  "sensu-backend", "start", \
   "--state-dir", "/var/lib/sensu/sensu-backend", \
   "--log-level", "debug" \
 ]
