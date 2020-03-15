@@ -1,36 +1,13 @@
 #!/bin/bash
 
-for i in ubuntu-*
-do
-  tag=${i/ubuntu-}
-  docker build --pull -f $i -t xlabsi/ubuntu:$tag .
-  docker push xlabsi/ubuntu:$tag
-done
+set -euo pipefail
 
-for i in centos-*
-do
-  tag=${i/centos-}
-  docker build --pull -f $i -t xlabsi/centos:$tag .
-  docker push xlabsi/centos:$tag
-done
+readonly filename=$1; shift
 
-for i in redhat-*
-do
-  tag=${i/redhat-}
-  docker build --pull -f $i -t xlabsi/redhat:$tag .
-  docker push xlabsi/redhat:$tag
-done
+readonly name=${filename%-*}
+readonly version=${filename##*-}
 
-for i in debian-*
-do
-  tag=${i/debian-}
-  docker build --pull -f $i -t xlabsi/debian:$tag .
-  docker push xlabsi/debian:$tag
-done
+readonly tag="xlabsi/$name:$version"
 
-for i in sensu-*
-do
-  tag=${i/sensu-}
-  docker build --pull -f $i -t xlabsi/sensu:$tag .
-  docker push xlabsi/sensu:$tag
-done
+docker build --pull -f $filename -t $tag .
+docker push $tag
